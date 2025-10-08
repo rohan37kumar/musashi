@@ -10,6 +10,9 @@ extern musashi::Application* musashi::CreateApplication();
 int main(int argc, char** argv)
 {
 	//printf("musashi Engine is running...\n");
+	musashi::Log::Init();
+	MSSHI_CORE_WARN("engine intiated!");
+	MSSHI_INFO("Hello!");
 
 	auto app = musashi::CreateApplication();
 	app->Run();

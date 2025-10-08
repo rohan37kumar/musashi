@@ -5,6 +5,7 @@
 
 //#include <stdio.h>
 #include "musashi/Application.h"
+#include "musashi/Log.h"
 
 //-----Entry Point-----
 #include "musashi/EntryPoint.h"
