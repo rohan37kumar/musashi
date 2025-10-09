@@ -2,6 +2,7 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h" //to enable logging of user defined types
 
 namespace musashi {
 	class MSSHI_API Log

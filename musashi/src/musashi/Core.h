@@ -12,3 +12,5 @@
 #else
 	#error Only Windows is supported for now!
 #endif
+
+#define BIT(x) (1 << x) //simple macro for number to bit conversion, 0 = 0001, 1 = 0010, 2 = 0100...

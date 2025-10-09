@@ -4,6 +4,9 @@
     <Filter Include="musashi">
       <UniqueIdentifier>{DF368FE3-4B16-0E7F-542E-9955C08C74E0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="musashi\Events">
+      <UniqueIdentifier>{E39164E8-CF5F-58EE-B8F3-C814A4603453}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Musashi.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\musashi\EntryPoint.h">
       <Filter>musashi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Events\ApplicationEvent.h">
+      <Filter>musashi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Events\Event.h">
+      <Filter>musashi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Events\KeyEvent.h">
+      <Filter>musashi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Events\MouseEvent.h">
+      <Filter>musashi\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\musashi\Log.h">
       <Filter>musashi</Filter>
