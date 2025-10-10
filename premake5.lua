@@ -10,6 +10,13 @@ workspace "musashi"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "musashi/external/GLFW/include"
+
+-- this simply includes the premake5.lua file from GLFW here in this premake file
+include "musashi/external/GLFW"
+
 project "musashi"
 	location "musashi"
 	kind "SharedLib"
@@ -30,7 +37,14 @@ project "musashi"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/external/spdlog/include"
+		"%{prj.name}/external/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
