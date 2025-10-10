@@ -14,7 +14,7 @@ namespace musashi
 	}
 	void Application::Run()
 	{
-
+		
 		while (true); //opening a window which runs endlessly.
 	}
 }
