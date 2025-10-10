@@ -18,6 +18,9 @@ project "musashi"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "msshi_pch.h"
+	pchsource "musashi/src/msshi_pch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

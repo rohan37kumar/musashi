@@ -4,8 +4,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace musashi
 {
 	class MSSHI_API MouseMovedEvent : public Event

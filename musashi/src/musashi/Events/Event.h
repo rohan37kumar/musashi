@@ -4,9 +4,6 @@
 
 #include "musashi/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace musashi
 {
 	enum class EventType  //types of specific events possible, numbers auto assigned

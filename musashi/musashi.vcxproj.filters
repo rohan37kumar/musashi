@@ -10,6 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\msshi_pch.h" />
     <ClInclude Include="src\musashi\Application.h">
       <Filter>musashi</Filter>
     </ClInclude>
@@ -36,6 +37,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\msshi_pch.cpp" />
     <ClCompile Include="src\musashi\Application.cpp">
       <Filter>musashi</Filter>
     </ClCompile>
