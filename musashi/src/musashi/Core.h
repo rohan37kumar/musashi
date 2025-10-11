@@ -14,7 +14,7 @@
 #endif
 
 //useful macros for verifying assumptions at runtime
-#ifdef HZ_ENABLE_ASSERTS
+#ifdef MSSHI_ENABLE_ASSERTS
 	#define MSSHI_ASSERT(x, ...) { if(!(x)) { MSSHI_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define MSSHI_CORE_ASSERT(x, ...) { if(!(x)) { MSSHI_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
