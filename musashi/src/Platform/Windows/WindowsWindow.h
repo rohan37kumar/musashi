@@ -20,7 +20,7 @@ namespace musashi
 		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
 		//window attributes
-		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; } //inline as it will be copied at call site
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 

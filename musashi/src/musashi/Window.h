@@ -26,7 +26,7 @@ namespace musashi
 	class MSSHI_API Window
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
+		using EventCallbackFn = std::function<void(Event&)>; //type alias of the event callback fn, takes Event as param
 
 		//pure virtual fns
 		virtual ~Window() {}
@@ -37,7 +37,7 @@ namespace musashi
 		virtual unsigned int GetHeight() const = 0;
 
 		//window attributes
-		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
+		virtual void SetEventCallback(const EventCallbackFn& callback) = 0; //setting the event callback fn
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 

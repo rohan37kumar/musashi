@@ -16,7 +16,7 @@ namespace musashi{
 	
 		void Run();
 	private:
-		std::unique_ptr<Window> m_Window; //pointer to window object
+		std::unique_ptr<Window> m_Window; //unique ptr represents exclusive ownership of a dynamically allocated object, here Window
 		bool m_Running = true;
 	};
 

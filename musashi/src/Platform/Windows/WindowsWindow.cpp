@@ -39,16 +39,17 @@ namespace musashi
 		}
 
 		//creation of GLFW Window
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		glfwSetWindowUserPointer(m_Window, &m_Data); //events
+		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr); //c_str() converts std::string to const char*
+		glfwMakeContextCurrent(m_Window); //setting OpenGL context to this window
+		glfwSetWindowUserPointer(m_Window, &m_Data); //now GLFW knows about our window and its data, m_Window is GLFW Window*, and m_Data is my struct
+		//will be used later for event callbacks
 		SetVSync(true);	
 	}
 
-	void WindowsWindow::OnUpdate()
+	void WindowsWindow::OnUpdate() //per frame update of our window
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		glfwSwapBuffers(m_Window); //yet to know it's functionality
 	}
 
 	void WindowsWindow::Shutdown()
@@ -58,6 +59,7 @@ namespace musashi
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		//controlling how buffer swaps are synchronized with the monitor’s vertical refresh rate
 		if (enabled)
 			glfwSwapInterval(1); //enable vsync, explanation pending
 		else
