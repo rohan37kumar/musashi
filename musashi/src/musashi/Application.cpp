@@ -20,7 +20,7 @@ namespace musashi
 		while (m_Running) //our main loop
 		{
 			//test GLFW fns
-			glClearColor(175, 214, 255, 0.75);
+			glClearColor(0.157f, 0.157f, 0.157f, 0.5f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Window->OnUpdate();
