@@ -13,4 +13,13 @@
 	#error Only Windows is supported for now!
 #endif
 
+//useful macros for verifying assumptions at runtime
+#ifdef HZ_ENABLE_ASSERTS
+	#define MSSHI_ASSERT(x, ...) { if(!(x)) { MSSHI_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define MSSHI_CORE_ASSERT(x, ...) { if(!(x)) { MSSHI_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define MSSHI_ASSERT(x, ...)
+	#define MSSHI_CORE_ASSERT(x, ...)
+#endif 
+
 #define BIT(x) (1 << x) //simple macro for number to bit conversion, 0 = 0001, 1 = 0010, 2 = 0100...

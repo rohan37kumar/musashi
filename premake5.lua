@@ -21,6 +21,7 @@ project "musashi"
 	location "musashi"
 	kind "SharedLib"
 	language "C++"
+	cppdialect "C++17"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -48,10 +49,7 @@ project "musashi"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
-
 		buildoptions { "/utf-8" }
 
 		defines
@@ -67,22 +65,25 @@ project "musashi"
 
 	filter "configurations:Debug"
 		defines "MSSHI_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MSSHI_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MSSHI_DIST"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
 
-	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -104,10 +105,7 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
-
 		buildoptions { "/utf-8" }
 
 		defines
@@ -117,13 +115,16 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "MSSHI_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MSSHI_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MSSHI_DIST"
+		runtime "Release"
 		optimize "On"
 

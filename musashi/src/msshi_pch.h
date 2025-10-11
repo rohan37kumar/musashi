@@ -14,6 +14,7 @@
 #include <unordered_set>
 #include <sstream>
 
+#include "musashi/Log.h"
 
 #ifdef MSSHI_PLATFORM_WINDOWS
 	#include <Windows.h>
