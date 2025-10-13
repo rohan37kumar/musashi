@@ -2,13 +2,12 @@
 #include "Application.h"
 
 #include "musashi/Log.h"
-#include "musashi/Events/ApplicationEvent.h"
 
 #include <GLFW/glfw3.h>
 
 namespace musashi
 {
-	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1) //std::bind(...) binds function + arguments into callable
 
 	Application::Application()
 	{
@@ -21,8 +20,13 @@ namespace musashi
 
 	void Application::OnEvent(Event& e)
 	{
-		MSSHI_CORE_INFO("{0}", e.ToString()); //logging every event
+		//core dispatcher functionality
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose)); //so if the event e is WindowCloseEvent -> call OnWindowClose fn
+
+		MSSHI_CORE_TRACE("{0}", e.ToString()); //logging every event
 	}
+
 	void Application::Run()
 	{
 		while (m_Running) //our main loop
@@ -32,8 +36,13 @@ namespace musashi
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Window->OnUpdate();
-			//till here we'll have a window that opens and gets deleted
-			//but non-functional, yet to add Events & callbacks
 		}
+	}
+
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false; //stopping the main Run() loop
+		return true;
 	}
 }

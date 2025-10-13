@@ -61,7 +61,7 @@ namespace musashi
 
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) //set Window resize event
 		{
-			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window); //getting window data
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window); //returns a void* from GLFW -> cast it to WindowData* -> dereference to get WindowData
 			data.Width = width;
 			data.Height = height;
 			WindowResizeEvent event(width, height); //creating a window resize event
