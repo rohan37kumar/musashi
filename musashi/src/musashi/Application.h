@@ -15,6 +15,7 @@ namespace musashi{
 			virtual ~Application();
 	
 		void Run();
+		void OnEvent(Event& e);
 	private:
 		std::unique_ptr<Window> m_Window; //unique ptr represents exclusive ownership of a dynamically allocated object, here Window
 		bool m_Running = true;
