@@ -155,7 +155,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\musashi\LayerStack.h" />
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\musashi\Layer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\msshi_pch.h" />
     <ClInclude Include="src\musashi\Application.h" />
@@ -169,6 +171,8 @@
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\musashi\LayerStack.cpp" />
+    <ClCompile Include="src\musashi\Layer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\msshi_pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

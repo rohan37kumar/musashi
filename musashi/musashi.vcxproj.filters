@@ -47,6 +47,8 @@
     <ClInclude Include="src\musashi\Window.h">
       <Filter>musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Layer.h" />
+    <ClInclude Include="src\musashi\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -59,5 +61,7 @@
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>musashi</Filter>
     </ClCompile>
+    <ClCompile Include="src\musashi\Layer.cpp" />
+    <ClCompile Include="src\musashi\LayerStack.cpp" />
   </ItemGroup>
 </Project>

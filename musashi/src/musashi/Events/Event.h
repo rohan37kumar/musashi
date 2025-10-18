@@ -51,7 +51,7 @@ namespace musashi
 			return GetCategoryFlags() & category; //this is simple utility fn, checks category of event using bitwise AND, implementation of above event category enum
 		}
 
-	protected:
+	//protected:
 		bool Handled = false; //to check if the event has been handled or not
 
 	};
