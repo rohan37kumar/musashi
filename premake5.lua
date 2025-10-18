@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "musashi/external/GLFW/include"
+IncludeDir["Glad"] = "musashi/external/Glad/include"
 
--- this simply includes the premake5.lua file from GLFW here in this premake file
+-- this simply includes the premake5.lua file from our other external projects here in this premake file
 include "musashi/external/GLFW"
+include "musashi/external/Glad"
 
 project "musashi"
 	location "musashi"
@@ -39,12 +41,14 @@ project "musashi"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/external/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,8 @@ project "musashi"
 		defines
 		{
 			"MSSHI_PLATFORM_WINDOWS",
-			"MSSHI_BUILD_DLL"
+			"MSSHI_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

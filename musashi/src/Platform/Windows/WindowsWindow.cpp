@@ -5,6 +5,8 @@
 #include "musashi/Events/KeyEvent.h"
 #include "musashi/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace musashi
 {
 	static bool s_GLFWInitialized = false;
@@ -52,6 +54,9 @@ namespace musashi
 		//creation of GLFW Window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr); //c_str() converts std::string to const char*
 		glfwMakeContextCurrent(m_Window); //setting OpenGL context to this window
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		//fills in function pointers (in Glad Header) with actual addresses from the driver, pointers of the modern OpenGL functions which are only exposed at runtime
+		MSSHI_CORE_ASSERT(status, "Failed to initialize Glad..."); //catching it's status
 		glfwSetWindowUserPointer(m_Window, &m_Data); //now GLFW knows about our window and its data, m_Window is GLFW Window*, and m_Data is my struct
 		//will be used later for event callbacks
 		SetVSync(true);
