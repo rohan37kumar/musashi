@@ -14,10 +14,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "musashi/external/GLFW/include"
 IncludeDir["Glad"] = "musashi/external/Glad/include"
+IncludeDir["Imgui"] = "musashi/external/imgui"
 
 -- this simply includes the premake5.lua file from our other external projects here in this premake file
 include "musashi/external/GLFW"
 include "musashi/external/Glad"
+include "musashi/external/imgui"
 
 project "musashi"
 	location "musashi"
@@ -42,13 +44,15 @@ project "musashi"
 		"%{prj.name}/src",
 		"%{prj.name}/external/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.Imgui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"Imgui",
 		"opengl32.lib"
 	}
 

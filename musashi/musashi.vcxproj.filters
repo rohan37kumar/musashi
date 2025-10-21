@@ -53,6 +53,8 @@
     <ClInclude Include="src\musashi\Window.h">
       <Filter>musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -71,5 +73,7 @@
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>musashi</Filter>
     </ClCompile>
+    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp" />
   </ItemGroup>
 </Project>

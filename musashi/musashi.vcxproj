@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>msshi_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MSSHI_PLATFORM_WINDOWS;MSSHI_BUILD_DLL;GLFW_INCLUDE_NONE;MSSHI_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -104,7 +104,7 @@
       <PrecompiledHeaderFile>msshi_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MSSHI_PLATFORM_WINDOWS;MSSHI_BUILD_DLL;GLFW_INCLUDE_NONE;MSSHI_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -132,7 +132,7 @@
       <PrecompiledHeaderFile>msshi_pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MSSHI_PLATFORM_WINDOWS;MSSHI_BUILD_DLL;GLFW_INCLUDE_NONE;MSSHI_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\GLFW\include;external\Glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -156,6 +156,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\msshi_pch.h" />
     <ClInclude Include="src\musashi\Application.h" />
@@ -171,6 +173,8 @@
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\msshi_pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -186,6 +190,9 @@
     </ProjectReference>
     <ProjectReference Include="external\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="external\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

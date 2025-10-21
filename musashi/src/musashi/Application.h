@@ -23,6 +23,8 @@ namespace musashi{
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 
+		inline Window& GetWindow() { return *m_Window; } //getter for window
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
