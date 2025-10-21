@@ -145,7 +145,7 @@ namespace musashi
 	void WindowsWindow::OnUpdate() //per frame update of our window
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window); //yet to understand it's functionality
+		glfwSwapBuffers(m_Window); //todo: yet to understand it's functionality
 	}
 
 	void WindowsWindow::Shutdown()
