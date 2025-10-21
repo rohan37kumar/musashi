@@ -1,17 +1,17 @@
 musashi Engine Functionalities-
 -------------------------------------------------------
-(step-by-step implementation)
+(step-by-step implementation checklist)
 
 
-- core loop                                        -implemented
-- window context                                   -implemented
-- input handling                                   -implemented
-- event polling / central event queue
-- Debug Logging [Engine and Client side]           -implemented
-- Graphic Rendering Pipeline (GLFW/Glad)           -implemented
-- Physics and Simulation
-- Entity Component System
-- Asset Pipeline & Resource Manager
-- Audio Library and Mixer
-- Deggugging Support / Console Commands (maybe)
-- Extensibility & Scripting (maybe)
+- [x] core loop
+- [x] window context
+- [x] input handling
+- [ ] event polling / central event queue
+- [x] Debug Logging [Engine and Client side]
+- [x] Graphic Rendering Pipeline (GLFW/Glad)
+- [ ] Physics and Simulation
+- [ ] Entity Component System
+- [ ] Asset Pipeline & Resource Manager
+- [ ] Audio Library and Mixer
+- [ ] Deggugging Support / Console Commands (maybe)
+- [ ] Extensibility & Scripting (maybe)
