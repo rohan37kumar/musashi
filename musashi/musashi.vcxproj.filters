@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -13,9 +16,18 @@
     <Filter Include="musashi\Events">
       <UniqueIdentifier>{E39164E8-CF5F-58EE-B8F3-C814A4603453}</UniqueIdentifier>
     </Filter>
+    <Filter Include="musashi\ImGui">
+      <UniqueIdentifier>{4917A35C-B5D7-1E93-7E12-6810EA91636F}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\Platform\OpenGL\imgui_impl_glfw.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -41,6 +53,9 @@
     <ClInclude Include="src\musashi\Events\MouseEvent.h">
       <Filter>musashi\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h">
+      <Filter>musashi\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\musashi\Layer.h">
       <Filter>musashi</Filter>
     </ClInclude>
@@ -53,16 +68,23 @@
     <ClInclude Include="src\musashi\Window.h">
       <Filter>musashi</Filter>
     </ClInclude>
-    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\imgui_impl_glfw.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\msshi_pch.cpp" />
     <ClCompile Include="src\musashi\Application.cpp">
       <Filter>musashi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp">
+      <Filter>musashi\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\musashi\Layer.cpp">
       <Filter>musashi</Filter>
@@ -73,7 +95,5 @@
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>musashi</Filter>
     </ClCompile>
-    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp" />
   </ItemGroup>
 </Project>

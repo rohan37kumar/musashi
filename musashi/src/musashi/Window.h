@@ -41,6 +41,8 @@ namespace musashi
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
+		virtual void* GetNativeWindow() const = 0; //to get native window pointer (GLFWwindow* for glfw)
+
 		//fn to create a window
 		static Window* Create(const WindowProps& props = WindowProps());
 		//this Create fn will have to be defined per platform

@@ -155,7 +155,7 @@ namespace musashi
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
-		//controlling how buffer swaps are synchronized with the monitor’s vertical refresh rate
+		//controlling how buffer swaps are synchronized with the monitor's vertical refresh rate
 		if (enabled)
 			glfwSwapInterval(1); //enable vsync, explanation pending
 		else
@@ -168,4 +168,4 @@ namespace musashi
 		return m_Data.VSync;
 	}
 }
-//really simple stuff, boilerplate [dead skull emoji]
+//really simple stuff, boilerplate [dead skull]

@@ -156,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Musashi.h" />
-    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\imgui_impl_glfw.h" />
     <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\msshi_pch.h" />
@@ -167,19 +167,21 @@
     <ClInclude Include="src\musashi\Events\Event.h" />
     <ClInclude Include="src\musashi\Events\KeyEvent.h" />
     <ClInclude Include="src\musashi\Events\MouseEvent.h" />
+    <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\musashi\Layer.h" />
     <ClInclude Include="src\musashi\LayerStack.h" />
     <ClInclude Include="src\musashi\Log.h" />
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\msshi_pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\musashi\Application.cpp" />
+    <ClCompile Include="src\musashi\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\musashi\Layer.cpp" />
     <ClCompile Include="src\musashi\LayerStack.cpp" />
     <ClCompile Include="src\musashi\Log.cpp" />

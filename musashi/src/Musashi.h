@@ -8,6 +8,8 @@
 #include "musashi/Layer.h"
 #include "musashi/Log.h"
 
+#include "musashi/ImGui/ImGuiLayer.h"
+
 
 //-----Entry Point-----
 #include "musashi/EntryPoint.h"

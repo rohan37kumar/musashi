@@ -4,7 +4,7 @@
 
 namespace musashi
 {
-	class ImGuiLayer : public Layer
+	class MSSHI_API ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
@@ -16,6 +16,6 @@ namespace musashi
 		void OnEvent(Event& event);
 
 	private:
-		float m_Time = 0.0f;
+
 	};
 }

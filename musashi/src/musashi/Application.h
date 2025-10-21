@@ -14,8 +14,8 @@ namespace musashi{
 	class MSSHI_API Application
 	{
 	public:
-			Application();
-			virtual ~Application();
+		Application();
+		virtual ~Application();
 	
 		void Run();
 		void OnEvent(Event& e);
@@ -23,7 +23,8 @@ namespace musashi{
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 
-		inline Window& GetWindow() { return *m_Window; } //getter for window
+		inline Window& GetWindow() { return *m_Window; }
+		inline static Application& Get() { return *s_Instance; }
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -31,6 +32,9 @@ namespace musashi{
 		std::unique_ptr<Window> m_Window; //unique ptr represents exclusive ownership of a dynamically allocated object, here Window
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+	private:
+		static Application* s_Instance;
 	};
 
 	//will be defined in the CLIENT code
