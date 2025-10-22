@@ -24,3 +24,6 @@
 #endif 
 
 #define BIT(x) (1 << x) //simple macro for number to bit conversion, 0 = 0001, 1 = 0010, 2 = 0100...
+
+#define MSSHI_BIND_EVENT(fn) std::bind(&fn, this, std::placeholders::_1)
+//binding event fns into a callable

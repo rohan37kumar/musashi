@@ -106,6 +106,13 @@ namespace musashi
 			}
 		});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) //set Char typed events
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
+		});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) //set Mouse button events
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

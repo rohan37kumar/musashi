@@ -27,7 +27,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new musashi::ImGuiLayer());
+		PushOverlay(new musashi::ImGuiLayer()); //adds the imgui layer on the top
 	}
 	~Sandbox()
 	{

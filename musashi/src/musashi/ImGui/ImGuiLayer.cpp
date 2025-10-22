@@ -1,4 +1,5 @@
 ﻿//used many references form the imgui backend codes of implementing opengl and glfw
+//TODO add documentation comments
 
 #include "msshi_pch.h"
 #include "ImGuiLayer.h"
@@ -34,6 +35,8 @@ namespace musashi
 		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow()); // implemented - //TODO: get the window pointer from application
 
 		ImGui_ImplGlfw_InitForOpenGL(window, true); // true = install callbacks, this will handle all key events automatically
+		//damn, maybe this also implements mouse and keyboard events handling
+
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 	void ImGuiLayer::OnDetach()
@@ -46,10 +49,10 @@ namespace musashi
 	void ImGuiLayer::OnUpdate()
 	{
 		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame(); //this automatically handles the deltaTime and DisplaySize setup
-		//damn, maybe this also implements mouse and keyboard events handling
-		ImGui::NewFrame();
+		ImGui_ImplGlfw_NewFrame(); 
+		//this automatically handles the deltaTime and DisplaySize setup
 		//! will have to study ImGui GLFW and OpenGL backend more better, this hack works for now
+		ImGui::NewFrame();
 
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
@@ -69,4 +72,3 @@ namespace musashi
 //		float time = (float)glfwGetTime();
 //		io.DeltaTime = m_Time > 0.0f ? (time - m_Time) : (1.0f / 60.0f);
 // 		m_Time = time;
-//		
