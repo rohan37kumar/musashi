@@ -13,6 +13,10 @@
 	#error Only Windows is supported for now!
 #endif
 
+#ifdef MSSHI_DEBUG
+	#define MSSHI_ENABLE_ASSERTS
+#endif
+
 //useful macros for verifying assumptions at runtime
 #ifdef MSSHI_ENABLE_ASSERTS
 	#define MSSHI_ASSERT(x, ...) { if(!(x)) { MSSHI_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
