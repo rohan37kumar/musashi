@@ -18,9 +18,12 @@ IncludeDir["Glad"] = "musashi/external/Glad/include"
 IncludeDir["Imgui"] = "musashi/external/imgui"
 
 -- this simply includes the premake5.lua file from our other external projects here in this premake file
-include "musashi/external/GLFW"
-include "musashi/external/Glad"
-include "musashi/external/imgui"
+group "Dependencies"
+	include "musashi/external/GLFW"
+	include "musashi/external/Glad"
+	include "musashi/external/imgui"
+
+group ""
 
 project "musashi"
 	location "musashi"
