@@ -17,6 +17,7 @@ namespace musashi {
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
+	//todo shared_ptr or unique_ptr?
 
 }
 
