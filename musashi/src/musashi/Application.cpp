@@ -63,10 +63,6 @@ namespace musashi
 			for(Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			//test Input Polling
-			//auto [x, y] = Input::GetMousePosition();
-			//MSSHI_CORE_INFO("Mouse Position: {0}, {1}", x, y);
-
 			m_Window->OnUpdate();
 		}
 	}

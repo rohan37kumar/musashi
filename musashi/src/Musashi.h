@@ -8,6 +8,10 @@
 #include "musashi/Layer.h"
 #include "musashi/Log.h"
 
+#include "musashi/Input.h"
+#include "musashi/KeyCodes.h"
+#include "musashi/MouseButtonCodes.h"
+
 #include "musashi/ImGui/ImGuiLayer.h"
 
 

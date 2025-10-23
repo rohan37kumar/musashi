@@ -14,10 +14,13 @@ public:
 	void OnUpdate() override
 	{
 		//MSSHI_INFO("ExampleLayer::Update");
+
+		if (musashi::Input::IsKeyPressed(MSSHI_KEY_TAB))
+			MSSHI_INFO("Tab Key Pressed");
 	}
 	void OnEvent(musashi::Event& event) override
 	{
-		MSSHI_INFO("{0}", event.ToString());
+		//MSSHI_INFO("{0}", event.ToString());
 	}
 };
 
