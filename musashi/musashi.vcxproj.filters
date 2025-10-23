@@ -28,6 +28,9 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -56,6 +59,9 @@
     <ClInclude Include="src\musashi\ImGui\ImGuiLayer.h">
       <Filter>musashi\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Input.h">
+      <Filter>musashi</Filter>
+    </ClInclude>
     <ClInclude Include="src\musashi\Layer.h">
       <Filter>musashi</Filter>
     </ClInclude>
@@ -75,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>

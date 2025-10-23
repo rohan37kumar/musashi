@@ -13,7 +13,7 @@ public:
 
 	void OnUpdate() override
 	{
-		MSSHI_INFO("ExampleLayer::Update");
+		//MSSHI_INFO("ExampleLayer::Update");
 	}
 	void OnEvent(musashi::Event& event) override
 	{

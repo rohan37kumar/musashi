@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace musashi
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1) //std::bind(...) binds function + arguments into callable
@@ -60,6 +62,10 @@ namespace musashi
 
 			for(Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			//test Input Polling
+			//auto [x, y] = Input::GetMousePosition();
+			//MSSHI_CORE_INFO("Mouse Position: {0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
