@@ -152,7 +152,8 @@ namespace musashi
 	void WindowsWindow::OnUpdate() //per frame update of our window
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window); //todo: yet to understand it's functionality
+		glfwSwapBuffers(m_Window); // //todo: yet to understand it's functionality
+		//for double buffering in OpenGL rendering, swaps front and back buffers, provides smooth rendering
 	}
 
 	void WindowsWindow::Shutdown()
