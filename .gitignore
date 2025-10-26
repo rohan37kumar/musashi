@@ -1,9 +1,9 @@
-#Directories
+# Directories
 .vs/
 .vscode/
 bin/
 bin-int/
 
 
-#Files
+# Files
 *.user
