@@ -20,6 +20,9 @@ namespace musashi
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent)); //todo understand the event callback stack, how events are passed from window to application
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 	Application::~Application()
 	{
@@ -56,14 +59,21 @@ namespace musashi
 	{
 		while (m_Running) //our main loop
 		{
-			//test GLFW fns
+			//clear the screen -> set GLFW window color
 			glClearColor(0.157f, 0.157f, 0.157f, 0.5f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			//update all layers
 			for(Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			m_Window->OnUpdate();
+			//imgui rendering implementation
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
+
+			m_Window->OnUpdate(); //swap buffers and poll events
 		}
 	}
 

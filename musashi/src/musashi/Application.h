@@ -4,10 +4,13 @@
 #pragma once
 
 #include "Core.h"
+
+#include "Window.h"
 #include "musashi/LayerStack.h"
 #include "musashi/Events/Event.h"
 #include "musashi/Events/ApplicationEvent.h"
-#include "Window.h"
+
+#include "musashi/ImGui/ImGuiLayer.h"
 
 namespace musashi{
 
@@ -30,6 +33,9 @@ namespace musashi{
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window; //unique ptr represents exclusive ownership of a dynamically allocated object, here Window
+		//std::unique_ptr<ImGuiLayer> m_ImGuiLayer; 
+		//now musashi intrinsically provides ImGui Layer as it's UI solution
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

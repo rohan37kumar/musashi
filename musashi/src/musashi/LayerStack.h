@@ -27,7 +27,6 @@ namespace musashi
 
 	private:
 		std::vector<Layer*> m_Layers;
-		std::vector<Layer*>::iterator m_LayerInsert; //iterator, as a divider between layers and overlays
-		//every frame all the layers will be iterated over for events
+		unsigned int m_LayerInsertIndex = 0; //no more iterator, simple index tracking to insert layers
 	};
 }

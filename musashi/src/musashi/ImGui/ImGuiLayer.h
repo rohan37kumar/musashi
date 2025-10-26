@@ -10,12 +10,13 @@ namespace musashi
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		//virtual void OnUpdate() override; //! OnImGuiRender() ?
+		virtual void OnImGuiRender() override;
 
-	private:
-
+		void Begin();
+		void End();
+		//previously did manual setup in OnUpdate(), better to have explicit fns
 	};
 }
