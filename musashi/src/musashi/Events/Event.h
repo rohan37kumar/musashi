@@ -92,8 +92,11 @@ namespace musashi
 		Event& m_Event; //reference to the event that needs to be dispatched
 	};
 
-	inline std::ostream& operator<<(std::ostream& os, const Event& e) //overloading the "stream insertion operator (<<)" to print event details using our logger
-	{
-		return os << e.ToString();
-	}
+	
+}
+
+//overloading the "stream insertion operator (<<)" to print event details using our logger
+inline std::ostream& operator<<(std::ostream& os, const musashi::Event& e)
+{
+	return os << e.ToString();
 }

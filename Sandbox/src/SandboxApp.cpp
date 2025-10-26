@@ -40,5 +40,6 @@ public:
 
 musashi::Application* musashi::CreateApplication()
 {
+	//creating a Sandbox app of type musashi::Application, and returning to engine
 	return new Sandbox();
 }

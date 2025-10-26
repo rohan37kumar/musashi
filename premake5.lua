@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "musashi/external/GLFW/include"
 IncludeDir["Glad"] = "musashi/external/Glad/include"
 IncludeDir["Imgui"] = "musashi/external/imgui"
+IncludeDir["glm"] = "musashi/external/glm"
 
 -- this simply includes the premake5.lua file from our other external projects here in this premake file
 group "Dependencies"
@@ -40,7 +41,9 @@ project "musashi"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/external/glm/glm/**.hpp",
+		"%{prj.name}/external/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -49,7 +52,8 @@ project "musashi"
 		"%{prj.name}/external/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.Imgui}"
+		"%{IncludeDir.Imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -109,7 +113,8 @@ project "Sandbox"
 	includedirs
 	{
 		"musashi/external/spdlog/include",
-		"musashi/src"
+		"musashi/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

@@ -7,3 +7,6 @@
 [submodule "musashi/external/imgui"]
 	path = musashi/external/imgui
 	url = https://github.com/rohan37kumar/imgui/
+[submodule "musashi/external/glm"]
+	path = musashi/external/glm
+	url = https://github.com/g-truc/glm
