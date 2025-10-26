@@ -3,11 +3,11 @@
 
 //testing the engine functions here
 
-class ExampleLayer : public musashi::Layer
+class EngineLayer : public musashi::Layer
 {
 public:
-	ExampleLayer()
-		: Layer("Example")
+	EngineLayer()
+		: Layer("Engine")
 	{
 	}
 
@@ -29,8 +29,9 @@ class Sandbox : public musashi::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
-		PushOverlay(new musashi::ImGuiLayer()); //adds the imgui layer on the top
+		PushLayer(new EngineLayer());
+
+		//PushOverlay(new musashi::ImGuiLayer()); //adds the imgui layer on the top ]- no more, our musashi engine will automatically add
 	}
 	~Sandbox()
 	{
