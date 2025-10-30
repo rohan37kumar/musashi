@@ -1,5 +1,5 @@
 ﻿//used many references form the imgui backend codes of implementing opengl and glfw
-//TODO add documentation comments
+//DONE - add documentation comments
 
 #include "msshi_pch.h"
 #include "ImGuiLayer.h"
@@ -116,9 +116,9 @@ namespace musashi
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
 
-		// fixed: //TODO: set key map correctly - high priority
+		// fixed: //DONE: set key map correctly - high priority
 		//New method, used official imgui backend
-		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow()); // implemented - //TODO: get the window pointer from application
+		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow()); // implemented - //DONE: get the window pointer from application
 
 		ImGui_ImplGlfw_InitForOpenGL(window, true); // true = install callbacks, this will handle all key events automatically
 		//damn, maybe this also implements mouse and keyboard events handling
