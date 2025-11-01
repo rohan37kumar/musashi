@@ -10,9 +10,6 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 
-//#include "Platform/OpenGL/imgui_opengl_renderer.h"
-//#include "Platform/OpenGL/imgui_impl_glfw.h"
-
 #include "musashi/Application.h"
 
 namespace musashi
