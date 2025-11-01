@@ -30,8 +30,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new EngineLayer());
-
-		//PushOverlay(new musashi::ImGuiLayer()); //adds the imgui layer on the top ]- no more, our musashi engine will automatically add
+		
 	}
 	~Sandbox()
 	{
