@@ -20,6 +20,7 @@
 #include <sstream>
 
 #include "musashi/Log.h"
+#include "musashi/Input.h"
 
 #ifdef MSSHI_PLATFORM_WINDOWS
 	#include <Windows.h>

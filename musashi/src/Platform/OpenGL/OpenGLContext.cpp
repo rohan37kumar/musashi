@@ -20,6 +20,9 @@ namespace musashi
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		MSSHI_CORE_ASSERT(status, "Failed to initialize Glad...");
+
+		MSSHI_CORE_INFO("Renderer in use: {0}", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+		MSSHI_CORE_INFO("version: {0}", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
 	}
 
 	void OpenGLContext::SwapBuffers()

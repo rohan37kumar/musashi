@@ -1,11 +1,7 @@
 #include "msshi_pch.h"
 #include "Application.h"
 
-#include "musashi/Log.h"
-
 #include <glad/glad.h>
-
-#include "Input.h"
 
 namespace musashi
 {
@@ -23,6 +19,54 @@ namespace musashi
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+
+		//TODO test rendering a simple hexagon in our engine
+		/*
+		*	need to create:
+		*		- vertex array
+		*		- vertex buffer
+		*		- index buffer
+		*		
+		*/
+		MSSHI_CORE_TRACE("rendering hexagon...");
+
+		glGenVertexArrays(1, &m_VertexArray);
+		glBindVertexArray(m_VertexArray);
+
+		glGenBuffers(1, &m_VertexBuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+		// hexagon vertices (center + 6 outer vertices)
+		float vertices[7 * 3] = {
+			//center
+			  0.0f,  0.0f,  0.0f,	//0
+
+			  0.5f,  0.0f,  0.0f,	//1	right
+			  0.25f, 0.433f, 0.0f,	//2	tr
+			 -0.25f, 0.433f, 0.0f,	//3	tl
+			 -0.5f,  0.0f,  0.0f,	//4	left
+			 -0.25f,-0.433f, 0.0f,	//5	bl
+			  0.25f,-0.433f, 0.0f	//6	br
+		};
+
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+
+		glGenBuffers(1, &m_IndexBuffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+
+		unsigned int indices[18] = {
+			0, 1, 2,
+			0, 2, 3,
+			0, 3, 4,
+			0, 4, 5,
+			0, 5, 6,
+			0, 6, 1
+		};
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 	}
 	Application::~Application()
 	{
@@ -62,6 +106,9 @@ namespace musashi
 			//clear the screen -> set GLFW window color
 			glClearColor(0.157f, 0.157f, 0.157f, 0.5f);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			glBindVertexArray(m_VertexArray);
+			glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, nullptr); //drawing the hexagon using the indices
 
 			//update all layers
 			for(Layer* layer : m_LayerStack)
