@@ -5,7 +5,7 @@
 #include "musashi/Events/KeyEvent.h"
 #include "musashi/Events/MouseEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace musashi
 {
@@ -51,14 +51,15 @@ namespace musashi
 			s_GLFWInitialized = true;
 		}
 
+
 		//creation of GLFW Window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr); //c_str() converts std::string to const char*
-		glfwMakeContextCurrent(m_Window); //setting OpenGL context to this window
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		//fills in function pointers (in Glad Header) with actual addresses from the driver, pointers of the modern OpenGL functions which are only exposed at runtime
-		MSSHI_CORE_ASSERT(status, "Failed to initialize Glad..."); //catching it's status
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+		//moved the Rendering Context to OpenGLContext class, now WindowsWindow can switch between different contexts if needed, better modularity
+
 		glfwSetWindowUserPointer(m_Window, &m_Data); //now GLFW knows about our window and its data, m_Window is GLFW Window*, and m_Data is my struct
-		//will be used later for event callbacks
 		SetVSync(true);
 
 		//setting up event callbacks via GLFW Window
@@ -152,8 +153,7 @@ namespace musashi
 	void WindowsWindow::OnUpdate() //per frame update of our window
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window); // //todo: yet to understand it's functionality
-		//for double buffering in OpenGL rendering, swaps front and back buffers, provides smooth rendering
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::Shutdown()
@@ -177,3 +177,8 @@ namespace musashi
 	}
 }
 //really simple stuff, boilerplate [dead skull]
+
+
+
+//further documentation:
+//the gladLoadGLLoader function fills in function pointers (in Glad Header) with actual addresses from the driver, pointers of the modern OpenGL functions which are only exposed at runtime

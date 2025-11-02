@@ -1356,6 +1356,8 @@
     <ClInclude Include="src\musashi\Window.h">
       <Filter>src\musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1385,5 +1387,6 @@
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>src\musashi</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

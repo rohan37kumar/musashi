@@ -3,6 +3,7 @@
 #pragma once
 
 #include "musashi/Window.h"
+#include "musashi/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -32,6 +33,7 @@ namespace musashi
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData //for passing it into event callbacks
 		{
