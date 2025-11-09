@@ -1,4 +1,4 @@
-#include "msshi_pch.h"
+﻿#include "msshi_pch.h"
 #include "Application.h"
 
 #include <glad/glad.h>
@@ -20,21 +20,14 @@ namespace musashi
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		//TODO test rendering a simple hexagon in our engine
-		/*
-		*	need to create:
-		*		- vertex array
-		*		- vertex buffer
-		*		- index buffer
-		*		
-		*/
+
 		MSSHI_CORE_TRACE("rendering hexagon...");
 
 		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
 
 		glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);  // VBO becomes bound to the currently active VAO, in ARRAY BUFFER target
 
 		// hexagon vertices (center + 6 outer vertices)
 		float vertices[7 * 3] = {
@@ -54,8 +47,12 @@ namespace musashi
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
+		/*
+		VAO (m_VertexBuffer) attribute 0 -> VBO (GL_ARRAY_BUFFER)
+		*/
+
 		glGenBuffers(1, &m_IndexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);  // EBO becomes bound to the currently active VAO, in ELEMENT ARRAY BUFFER target
 
 		unsigned int indices[18] = {
 			0, 1, 2,
@@ -108,7 +105,8 @@ namespace musashi
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, nullptr); //drawing the hexagon using the indices
+			glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, nullptr); 
+			//drawing the hexagon after reading data from VBO (vertices) and EBO (indices) via the VAO
 
 			//update all layers
 			for(Layer* layer : m_LayerStack)
