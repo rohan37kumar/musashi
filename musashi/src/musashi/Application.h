@@ -12,6 +12,8 @@
 
 #include "musashi/ImGui/ImGuiLayer.h"
 
+#include "musashi/Renderer/Shader.h"
+
 namespace musashi{
 
 	class MSSHI_API Application
@@ -40,6 +42,7 @@ namespace musashi{
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		static Application* s_Instance;

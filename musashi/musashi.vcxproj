@@ -567,6 +567,7 @@
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
     <ClInclude Include="src\Musashi.h" />
     <ClInclude Include="src\musashi\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\musashi\Renderer\Shader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -588,6 +589,7 @@
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\musashi\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

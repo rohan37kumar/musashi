@@ -64,6 +64,51 @@ namespace musashi
 		};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+		//writing our own simple shaders(GLSL)...
+		//the R prefix in string allows multi line without new line in Cpp
+
+		//responsible for positioning vertices
+		std::string vertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+			
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);
+			}
+		)";
+		/*
+		* simple GLSL
+		* - input vertexAttribute from VBO at location 0
+		* - output variable to fragment shader
+		* - glPosition --> built-in output variable -- holds the final position of the vertex in clip space
+		*/
+
+		//responsible for coloring the fragments/pixels
+		std::string fragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+			}
+		)";
+		/*
+		* - output color var again at location 0
+		* - getting interpolated input from vertex shader
+		* - final color assignment to output variable
+		*/
+
+		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+
 	}
 	Application::~Application()
 	{
@@ -104,6 +149,7 @@ namespace musashi
 			glClearColor(0.157f, 0.157f, 0.157f, 0.5f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_Shader->Bind(); //binding our simple shader (to/before)? our draw elements call
 			glBindVertexArray(m_VertexArray);
 			glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, nullptr); 
 			//drawing the hexagon after reading data from VBO (vertices) and EBO (indices) via the VAO
