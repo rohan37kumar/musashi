@@ -28,6 +28,9 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="src\musashi\ImGui">
       <UniqueIdentifier>{A08CD8D3-0CA3-D669-551A-628BC16FA7F1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\musashi\Renderer">
+      <UniqueIdentifier>{5CAF38F2-483E-C2BB-F15C-D6B6DDCAD261}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1302,6 +1308,9 @@
     <ClInclude Include="src\Musashi.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -1353,14 +1362,20 @@
     <ClInclude Include="src\musashi\MouseButtonCodes.h">
       <Filter>src\musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\GraphicsContext.h">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\Shader.h">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\musashi\Window.h">
       <Filter>src\musashi</Filter>
     </ClInclude>
-    <ClInclude Include="src\musashi\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\musashi\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1388,7 +1403,8 @@
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>src\musashi</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\musashi\Renderer\Shader.cpp" />
+    <ClCompile Include="src\musashi\Renderer\Shader.cpp">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
