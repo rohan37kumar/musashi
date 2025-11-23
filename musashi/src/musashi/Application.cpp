@@ -26,11 +26,6 @@ namespace musashi
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
 
-		//glGenBuffers(1, &m_VertexBuffer);
-		//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);  // VBO becomes bound to the currently active VAO, in ARRAY BUFFER target
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		// ^^^	abstracted [Buffer -> OpenGLBuffer] implementation
-
 		// hexagon vertices (center + 6 outer vertices)
 		float vertices[7 * 3] = {
 			//center
@@ -44,20 +39,14 @@ namespace musashi
 			  0.25f,-0.433f, 0.0f	//6	br
 		};
 
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));						//implementation defined [Buffer -> OpenGLBuffer]
 
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-		/*
+		/*  ^^^
 		VAO (m_VertexBuffer) attribute 0 -> VBO (GL_ARRAY_BUFFER)
 		*/
-
-		//glGenBuffers(1, &m_IndexBuffer);
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);  // EBO becomes bound to the currently active VAO, in ELEMENT ARRAY BUFFER target
-		//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-		// ^^^	abstracted [Buffer -> OpenGLBuffer] implementation
 
 		uint32_t indices[18] = {
 			0, 1, 2,
@@ -67,7 +56,7 @@ namespace musashi
 			0, 5, 6,
 			0, 6, 1
 		};
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t) ));
+		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t) ));		//implementation defined [Buffer -> OpenGLBuffer]
 
 		//writing our own simple shaders(GLSL)...
 		//the R prefix in string allows multi line without new line in Cpp

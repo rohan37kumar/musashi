@@ -9,7 +9,7 @@ namespace musashi
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(float* vertices, uint32_t size);
+		OpenGLVertexBuffer(float* vertices, uint32_t size); //size in bytes
 		virtual ~OpenGLVertexBuffer();
 
 		virtual void Bind() const;
@@ -23,7 +23,7 @@ namespace musashi
 	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
-		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
+		OpenGLIndexBuffer(uint32_t* indices, uint32_t count); //count of indices
 		virtual ~OpenGLIndexBuffer();
 
 		virtual void Bind() const;
@@ -36,4 +36,5 @@ namespace musashi
 		uint32_t m_Count;
 
 	};
+	//Index Buffer needs count of indices, unlike Vertex Buffer which needs size in bytes
 }
