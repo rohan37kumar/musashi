@@ -566,6 +566,7 @@
     <ClInclude Include="external\glm\glm\vec4.hpp" />
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -584,11 +585,14 @@
     <ClInclude Include="src\musashi\LayerStack.h" />
     <ClInclude Include="src\musashi\Log.h" />
     <ClInclude Include="src\musashi\MouseButtonCodes.h" />
+    <ClInclude Include="src\musashi\Renderer\Buffer.h" />
     <ClInclude Include="src\musashi\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\musashi\Renderer\Renderer.h" />
     <ClInclude Include="src\musashi\Renderer\Shader.h" />
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
@@ -601,6 +605,8 @@
     <ClCompile Include="src\musashi\Layer.cpp" />
     <ClCompile Include="src\musashi\LayerStack.cpp" />
     <ClCompile Include="src\musashi\Log.cpp" />
+    <ClCompile Include="src\musashi\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\musashi\Renderer\Renderer.cpp" />
     <ClCompile Include="src\musashi\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1308,6 +1308,9 @@
     <ClInclude Include="src\Musashi.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -1362,7 +1365,13 @@
     <ClInclude Include="src\musashi\MouseButtonCodes.h">
       <Filter>src\musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\Buffer.h">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\musashi\Renderer\GraphicsContext.h">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\Renderer.h">
       <Filter>src\musashi\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\musashi\Renderer\Shader.h">
@@ -1373,6 +1382,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1402,6 +1414,12 @@
     </ClCompile>
     <ClCompile Include="src\musashi\Log.cpp">
       <Filter>src\musashi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\musashi\Renderer\Buffer.cpp">
+      <Filter>src\musashi\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\musashi\Renderer\Renderer.cpp">
+      <Filter>src\musashi\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\musashi\Renderer\Shader.cpp">
       <Filter>src\musashi\Renderer</Filter>
