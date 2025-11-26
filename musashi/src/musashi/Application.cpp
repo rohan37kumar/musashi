@@ -9,6 +9,28 @@ namespace musashi
 
 	Application* Application::s_Instance = nullptr; //for passing application instance reference
 
+	//a temp conversion fn
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+			case ShaderDataType::Float:		return GL_FLOAT;
+			case ShaderDataType::Float2:	return GL_FLOAT;
+			case ShaderDataType::Float3:	return GL_FLOAT;
+			case ShaderDataType::Float4:	return GL_FLOAT;
+			case ShaderDataType::Mat3:		return GL_FLOAT;
+			case ShaderDataType::Mat4:		return GL_FLOAT;
+			case ShaderDataType::Int:		return GL_INT;
+			case ShaderDataType::Int2:		return GL_INT;
+			case ShaderDataType::Int3:		return GL_INT;
+			case ShaderDataType::Int4:		return GL_INT;
+			case ShaderDataType::Bool:		return GL_BOOL;
+		}
+
+		MSSHI_CORE_ASSERT(false, "Undefined ShaderDataType!");
+		return 0;
+	}
+
 	Application::Application()
 	{
 		MSSHI_CORE_ASSERT(!s_Instance, "Application already exists!"); //check if instance already exists
@@ -27,26 +49,42 @@ namespace musashi
 		glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
 
 		// hexagon vertices (center + 6 outer vertices)
-		float vertices[7 * 3] = {
+		float vertices[7 * 7] = {
 			//center
-			  0.0f,  0.0f,  0.0f,	//0
+			  0.0f,  0.0f,  0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//0
 
-			  0.5f,  0.0f,  0.0f,	//1	right
-			  0.25f, 0.433f, 0.0f,	//2	tr
-			 -0.25f, 0.433f, 0.0f,	//3	tl
-			 -0.5f,  0.0f,  0.0f,	//4	left
-			 -0.25f,-0.433f, 0.0f,	//5	bl
-			  0.25f,-0.433f, 0.0f	//6	br
+			  0.5f,  0.0f,  0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//1	right
+			  0.25f, 0.433f, 0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//2	tr
+			 -0.25f, 0.433f, 0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//3	tl
+			 -0.5f,  0.0f,  0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//4	left
+			 -0.25f,-0.433f, 0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//5	bl
+			  0.25f,-0.433f, 0.0f,  0.1f, 0.1f, 0.1f, 1.0f	//6	br
 		};
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));						//implementation defined [Buffer -> OpenGLBuffer]
+		
+		{	//sample layout to test stuff
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position"  },
+				{ ShaderDataType::Float4, "a_Color"     }  //if we had colors, hence added 4 more components for each vertext in vertices array
+			};
+			m_VertexBuffer->SetLayout(layout);		//overriden fn in openGLBuffer.h
+		}
 
+		uint32_t index = 0;
+		const auto& layout = m_VertexBuffer->Getlayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index,
+				element.GetComponentCount(),
+				ShaderDataTypeToOpenGLBaseType(element.Type),
+				(element.Normalized ? GL_TRUE : GL_FALSE),
+				layout.GetStride(),
+				(const void*)element.Offset);					//todo this type cast raises a warning
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-		/*  ^^^
-		VAO (m_VertexBuffer) attribute 0 -> VBO (GL_ARRAY_BUFFER)
-		*/
+			index++;
+		}
 
 		uint32_t indices[18] = {
 			0, 1, 2,
@@ -66,12 +104,15 @@ namespace musashi
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 
 			out vec3 v_Position;
+			out vec4 v_Color;
 			
 			void main()
 			{
 				v_Position = a_Position;
+				v_Color = a_Color;
 				gl_Position = vec4(a_Position, 1.0);
 			}
 		)";
@@ -89,10 +130,12 @@ namespace musashi
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
+			in vec4 v_Color;
 
 			void main()
 			{
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = v_Color;
 			}
 		)";
 		/*
