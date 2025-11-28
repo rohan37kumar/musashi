@@ -5,7 +5,6 @@
 
 namespace musashi
 {
-	//a temp conversion fn
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
 	{
 		switch (type)
