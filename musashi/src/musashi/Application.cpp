@@ -24,10 +24,6 @@ namespace musashi
 
 		MSSHI_CORE_TRACE("rendering hexagon...");
 
-		//glGenVertexArrays(1, &m_VertexArray);
-		//glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
-		//^^^ abstracted in VertexArray class
-
 		//calling Create : ref OpenGLVertexArray.cpp
 		m_VertexArray.reset(VertexArray::Create());
 
