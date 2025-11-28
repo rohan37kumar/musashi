@@ -1380,6 +1380,8 @@
     <ClInclude Include="src\musashi\Window.h">
       <Filter>src\musashi</Filter>
     </ClInclude>
+    <ClInclude Include="src\musashi\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1424,5 +1426,7 @@
     <ClCompile Include="src\musashi\Renderer\Shader.cpp">
       <Filter>src\musashi\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\musashi\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

@@ -9,27 +9,6 @@ namespace musashi
 
 	Application* Application::s_Instance = nullptr; //for passing application instance reference
 
-	//a temp conversion fn
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:		return GL_FLOAT;
-			case ShaderDataType::Float2:	return GL_FLOAT;
-			case ShaderDataType::Float3:	return GL_FLOAT;
-			case ShaderDataType::Float4:	return GL_FLOAT;
-			case ShaderDataType::Mat3:		return GL_FLOAT;
-			case ShaderDataType::Mat4:		return GL_FLOAT;
-			case ShaderDataType::Int:		return GL_INT;
-			case ShaderDataType::Int2:		return GL_INT;
-			case ShaderDataType::Int3:		return GL_INT;
-			case ShaderDataType::Int4:		return GL_INT;
-			case ShaderDataType::Bool:		return GL_BOOL;
-		}
-
-		MSSHI_CORE_ASSERT(false, "Undefined ShaderDataType!");
-		return 0;
-	}
 
 	Application::Application()
 	{
@@ -45,8 +24,12 @@ namespace musashi
 
 		MSSHI_CORE_TRACE("rendering hexagon...");
 
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
+		//glGenVertexArrays(1, &m_VertexArray);
+		//glBindVertexArray(m_VertexArray);   // <-- this VAO becomes the active listeners for further bind calls
+		//^^^ abstracted in VertexArray class
+
+		//calling Create : ref OpenGLVertexArray.cpp
+		m_VertexArray.reset(VertexArray::Create());
 
 		// hexagon vertices (center + 6 outer vertices)
 		float vertices[7 * 7] = {
@@ -61,30 +44,16 @@ namespace musashi
 			  0.25f,-0.433f, 0.0f,  0.1f, 0.1f, 0.1f, 1.0f	//6	br
 		};
 
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));						//implementation defined [Buffer -> OpenGLBuffer]
-		
-		{	//sample layout to test stuff
-			BufferLayout layout = {
-				{ ShaderDataType::Float3, "a_Position"  },
-				{ ShaderDataType::Float4, "a_Color"     }  //if we had colors, hence added 4 more components for each vertext in vertices array
-			};
-			m_VertexBuffer->SetLayout(layout);		//overriden fn in openGLBuffer.h
-		}
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));						//implementation defined [Buffer -> OpenGLBuffer]
+		//sample layout to test stuff
+		BufferLayout layout = {
+			{ ShaderDataType::Float3, "a_Position"  },
+			{ ShaderDataType::Float4, "a_Color"     }  //if we had colors, hence added 4 more components for each vertext in vertices array
+		};
+		vertexBuffer->SetLayout(layout);		//overriden fn in openGLBuffer.h
 
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->Getlayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
-				element.GetComponentCount(),
-				ShaderDataTypeToOpenGLBaseType(element.Type),
-				(element.Normalized ? GL_TRUE : GL_FALSE),
-				layout.GetStride(),
-				(const void*)element.Offset);					//todo this type cast raises a warning
-
-			index++;
-		}
+		m_VertexArray->AddVertexBuffer(vertexBuffer);		//linking VB : ref OpenGLVertexArray.cpp
 
 		uint32_t indices[18] = {
 			0, 1, 2,
@@ -94,7 +63,13 @@ namespace musashi
 			0, 5, 6,
 			0, 6, 1
 		};
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t) ));		//implementation defined [Buffer -> OpenGLBuffer]
+
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t) ));		//implementation defined [Buffer -> OpenGLBuffer]
+
+		m_VertexArray->SetIndexBuffer(indexBuffer);			//linking IB : ref OpenGLVertexArray.cpp
+
+
 
 		//writing our own simple shaders(GLSL)...
 		//the R prefix in string allows multi line without new line in Cpp
@@ -134,8 +109,8 @@ namespace musashi
 
 			void main()
 			{
-				color = vec4(v_Position * 0.5 + 0.5, 1.0);
-				color = v_Color;
+				color = vec4(v_Position * 0.5 + 0.5, 1.0);	//causes interpolation of the colors across our shape
+				//color = v_Color;
 			}
 		)";
 		/*
@@ -187,8 +162,8 @@ namespace musashi
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind(); //binding our simple shader (to/before)? our draw elements call
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);	//todo last part to abstract
 			//drawing the hexagon after reading data from VBO (vertices) and EBO (indices) via the VAO
 
 			//update all layers

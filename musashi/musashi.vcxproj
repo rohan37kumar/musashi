@@ -566,8 +566,10 @@
     <ClInclude Include="external\glm\glm\vec4.hpp" />
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\musashi\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\msshi_pch.h" />
@@ -592,8 +594,10 @@
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\musashi\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\msshi_pch.cpp">
