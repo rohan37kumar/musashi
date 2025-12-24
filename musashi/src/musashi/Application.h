@@ -15,6 +15,7 @@
 #include "musashi/Renderer/Shader.h"
 #include "musashi/Renderer/Buffer.h"
 #include "musashi/Renderer/VertexArray.h"
+#include "musashi/Renderer/Renderer.h"
 
 namespace musashi{
 

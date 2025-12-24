@@ -1,8 +1,6 @@
 ﻿#include "msshi_pch.h"
 #include "Application.h"
 
-#include <glad/glad.h>
-
 namespace musashi
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1) //std::bind(...) binds function + arguments into callable
@@ -21,8 +19,7 @@ namespace musashi
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-
-		MSSHI_CORE_TRACE("rendering hexagon...");
+		MSSHI_CORE_TRACE("rendering a hexagon...");
 
 		//calling Create : ref OpenGLVertexArray.cpp
 		m_VertexArray.reset(VertexArray::Create());
@@ -153,14 +150,19 @@ namespace musashi
 	{
 		while (m_Running) //our main loop
 		{
-			//clear the screen -> set GLFW window color
-			glClearColor(0.157f, 0.157f, 0.157f, 0.5f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.157f, 0.157f, 0.157f, 1 });
+			RenderCommand::Clear();
 
-			m_Shader->Bind(); //binding our simple shader (to/before)? our draw elements call
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);	//todo last part to abstract
-			//drawing the hexagon after reading data from VBO (vertices) and EBO (indices) via the VAO
+			Renderer::BeginScene();
+
+			//m_VertexArray->Bind();
+			//glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			// ^^^ abstracted to Renderer::Submit() : ref OpenGLRendererAPI.cpp
+
+			m_Shader->Bind(); //binding our shader before submitting VAO
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 
 			//update all layers
 			for(Layer* layer : m_LayerStack)

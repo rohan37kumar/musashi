@@ -13,11 +13,11 @@ namespace musashi
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:
+		case RendererAPI::API::None:
 				MSSHI_CORE_ASSERT(false, "RendererAPI->None selected!");
 				return nullptr;
 
-			case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 				return new OpenGLVertexBuffer(vertices, size);
 
 			default:
@@ -32,11 +32,11 @@ namespace musashi
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			MSSHI_CORE_ASSERT(false, "RendererAPI->None selected!");
 			return nullptr;
 
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, count);
 
 		default:

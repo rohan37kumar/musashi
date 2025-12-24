@@ -3,5 +3,17 @@
 
 namespace musashi
 {
-	RendererAPI Renderer::s_API = RendererAPI::OpenGL;	//will set it at runtime, for now hardcoding to OpenGL
+	void Renderer::BeginScene()		//todo imlement params	-> environ, camera, lighting stuff
+	{
+	}
+	void Renderer::EndScene()
+	{	
+	}
+
+
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)	//submits into render command queue to get evaluated
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
+	}
 }
