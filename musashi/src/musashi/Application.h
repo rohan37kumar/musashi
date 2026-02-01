@@ -1,5 +1,4 @@
 //this is the main application header file
-//for now just the Run fn is declared
 
 #pragma once
 
@@ -16,6 +15,7 @@
 #include "musashi/Renderer/Buffer.h"
 #include "musashi/Renderer/VertexArray.h"
 #include "musashi/Renderer/Renderer.h"
+#include "musashi/Renderer/Camera.h"
 
 namespace musashi{
 
@@ -46,6 +46,8 @@ namespace musashi{
 
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
+
+		OrthographicCamera m_Camera;	// default testing camera
 
 	private:
 		static Application* s_Instance;

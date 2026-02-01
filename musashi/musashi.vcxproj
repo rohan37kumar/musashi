@@ -566,6 +566,7 @@
     <ClInclude Include="external\glm\glm\vec4.hpp" />
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
     <ClInclude Include="src\Musashi.h" />
+    <ClInclude Include="src\musashi\Renderer\Camera.h" />
     <ClInclude Include="src\musashi\Renderer\RenderCommand.h" />
     <ClInclude Include="src\musashi\Renderer\RendererAPI.h" />
     <ClInclude Include="src\musashi\Renderer\VertexArray.h" />
@@ -597,6 +598,7 @@
     <ClInclude Include="src\musashi\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\musashi\Renderer\Camera.cpp" />
     <ClCompile Include="src\musashi\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\musashi\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\musashi\Renderer\VertexArray.cpp" />

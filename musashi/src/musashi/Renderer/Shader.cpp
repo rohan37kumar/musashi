@@ -127,4 +127,9 @@ namespace musashi
 	{
 		glUseProgram(0);
 	}
+
+	void Shader::UploadUniformMat4(const glm::mat4& matrix)
+	{
+		
+	}
 }

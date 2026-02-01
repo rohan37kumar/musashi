@@ -26,7 +26,7 @@ namespace musashi
 
 		// hexagon vertices (center + 6 outer vertices)
 		float vertices[7 * 7] = {
-			//center
+			 //center
 			  0.0f,  0.0f,  0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//0
 
 			  0.5f,  0.0f,  0.0f,	0.1f, 0.1f, 0.1f, 1.0f,	//1	right
@@ -62,8 +62,6 @@ namespace musashi
 
 		m_VertexArray->SetIndexBuffer(indexBuffer);			//linking IB : ref OpenGLVertexArray.cpp
 
-
-
 		//writing our own simple shaders(GLSL)...
 		//the R prefix in string allows multi line without new line in Cpp
 
@@ -74,6 +72,8 @@ namespace musashi
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_VPMatrix;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 			
@@ -81,7 +81,7 @@ namespace musashi
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_VPMatrix * vec4(a_Position, 1.0);
 			}
 		)";
 		/*
